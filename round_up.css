@@ -1,0 +1,8 @@
+select.round_up_rank {
+	display: inline;
+    width: 60px !important;
+}
+select.round_up_charity {
+	display: inline;
+	width: 140px !important;
+}
