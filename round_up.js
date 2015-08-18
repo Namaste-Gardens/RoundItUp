@@ -12,7 +12,7 @@ var RoundUp = function(){
         appendTo: ''
     };
 	
-	var serverSideApiUri = 'http://www.jerah.us/roundup/round_up.php';
+	var serverSideApiUri = 'http://rounditup.uamini.com/roundup/round_up.php';
 	//var serverSideApiUri = 'http://localhost/rounditup/round_up.php'; /* dev mode */
 	
     var apiKey = null;
