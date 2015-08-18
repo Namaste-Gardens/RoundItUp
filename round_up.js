@@ -77,9 +77,9 @@ var RoundUp = function(){
                 class: 'round_up_rank',
                 id: 'round_up_rank'
             })
-			.append('<option value="cents" selected>10 ¢</option>')
-			.append('<option value="dollars">1 $</option>')
-			.append('<option value="5dollars">5 $</option>')
+			.append('<option value="cents" selected>$.10</option>')
+			.append('<option value="dollars">$1.00</option>')
+			.append('<option value="5dollars">$5.00</option>')
             .css(settings.css)
 			.on('change', function(e) {
 				e.preventDefault();
