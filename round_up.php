@@ -91,7 +91,14 @@ class RoundItUp{
         return $this->storeDetails;
     }
     
-	
+	/**
+	 * Returns last mysql error
+	 * 
+	 * @return string
+	 */
+	public function getLastMysqlError() {
+		return $this->link->error;
+	}
     /*
      * Create order token
      */
@@ -174,7 +181,7 @@ if(isset($_POST['action']) && $_POST['action'] == 'create'){
                 if($obj->createRoundUpEntry($_POST['key'], $_POST['amount'], $_POST['token'], $_POST['ref'], $_POST['charityUID'])){
                     $output = array('status' => 'success');
                 }else{
-                    $output = array('status' => 'error', 'msg' => 'ENTRY_NOT_CREATED');
+                    $output = array('status' => 'error', 'msg' => 'ENTRY_NOT_CREATED', 'mysql_error' => $obj->getLastMysqlError());
                 }
             }else{
                 $output = array('status' => 'error', 'msg' => 'STORE_NOT_ACTIVE');
@@ -199,7 +206,7 @@ if(isset($_POST['action']) && $_POST['action'] == 'delete'){
                 if($obj->deleteRoundUpEntry($_POST['key'], $_POST['token'])){
                     $output = array('status' => 'success');
                 }else{
-                    $output = array('status' => 'error', 'msg' => 'ENTRY_NOT_DELETED');
+                    $output = array('status' => 'error', 'msg' => 'ENTRY_NOT_DELETED', 'mysql_error' => $obj->getLastMysqlError());
                 }
             }else{
                 $output = array('status' => 'error', 'msg' => 'STORE_NOT_ACTIVE');
@@ -224,7 +231,7 @@ if(isset($_POST['action']) && $_POST['action'] == 'paid'){
                 if($obj->markPaidRoundUpEntry($_POST['key'], $_POST['token'])){
                     $output = array('status' => 'success');
                 }else{
-                    $output = array('status' => 'error', 'msg' => 'ENTRY_NOT_MARKED_PAID');
+                    $output = array('status' => 'error', 'msg' => 'ENTRY_NOT_MARKED_PAID', 'mysql_error' => $obj->getLastMysqlError());
                 }
             }else{
                 $output = array('status' => 'error', 'msg' => 'STORE_NOT_ACTIVE');
