@@ -12,16 +12,30 @@ jQuery(document).ready(function(){
 		'</tr>';
 
 	jQuery('div.cart_totals table tbody tr.shipping')
-			.after(html);
+		.after(html);
+	
+	var roundUpAmount = '<span class="roundUpAmount" title="Round It Up amount">(charity amount : $0.00)</span>';
+	jQuery('div.cart_totals table tbody tr.order-total span.amount')
+		.after(roundUpAmount);
 
 	var initialTotal = parseFloat(jQuery('div.cart_totals table tbody tr.order-total span.amount').html().replace('$', '')).toFixed(2);
 	if ( isNaN(initialTotal) ) {
 		initialTotal = 0.00; // intial value in case if failed to find/parse total amout element on page
 	}
 	
-	var onApply = function(roundUpTotal, roundUpToken) {
+	var onApply = function(roundUpTotal, roundUpAmount, roundUpToken) {
 		jQuery('div.cart_totals table tbody tr.order-total span.amount')
-				.html('$'+roundUpTotal);
+			.html('$'+roundUpTotal);
+		
+		if ( parseFloat(roundUpAmount) > 0 ) {
+			jQuery('div.cart_totals table tbody tr.order-total span.roundUpAmount')
+				.show()
+				.html('(charity amount : $'+roundUpAmount + ')');
+		} else {
+			jQuery('div.cart_totals table tbody tr.order-total span.roundUpAmount')
+				.hide()
+				.html('(charity amount : $0.00)');
+		}
 
 		if(jQuery('[name=round_up_token]').length > 0){
 			jQuery('[name=round_up_token]').remove();

@@ -62,7 +62,6 @@ var RoundUp = function(){
 				e.preventDefault();
 		
 				roundUpTotalFunction();
-				onApplyCallback(roundUpTotal, roundUpToken);
 			});
     };
 	
@@ -151,7 +150,7 @@ var RoundUp = function(){
                     roundUpButtonClicked = false;
                     button.show();
 					
-					onApplyCallback(total, null);
+					onApplyCallback(total, 0, null);
                 }
             });
         } else {
@@ -182,7 +181,7 @@ var RoundUp = function(){
 			});
 			roundUpButtonClicked = true;
 			
-			onApplyCallback(roundUpTotal, roundUpToken);
+			onApplyCallback(roundUpTotal, roundUpAmount, roundUpToken);
 		}
     };
     
@@ -268,7 +267,7 @@ var RoundUp = function(){
 			.mouseenter(function(){
 					tooltip.css({
 						top: '-' + (div.height() / 2) + 'px',
-						left: (div.position()['left'] - tooltip.width()) +  'px'
+						left: - (tooltip.width() + 20) +  'px'
 					});
 					tooltip.fadeIn(400);
 				})

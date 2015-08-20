@@ -1,8 +1,14 @@
 select.round_up_rank {
-	display: inline;
-    width: initial !important;
+	display			: inline;
+    width			: initial !important;
 }
 select.round_up_charity {
-	display: inline;
-	width: initial !important;
+	display			: inline;
+	width			: initial !important;
+}
+
+span.roundUpAmount {
+	display			: none;
+	margin-left		: 20px;
+	color			: #21a117;
 }
