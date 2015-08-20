@@ -205,7 +205,7 @@ Flat Rate: <span class="amount">$1.00&nbsp;<div id="pok_shipping_holder" style="
 </tr>
 <tr class="order-total">
 <th>Total</th>
-<td><strong><span class="amount">$123.47</span></strong> </td>
+<td><strong><span class="amount">$23.47</span></strong> </td>
 </tr>
 </tbody></table>
 <div class="wc-proceed-to-checkout">
@@ -306,51 +306,14 @@ var wc_cart_fragments_params={"ajax_url":"\/wp-admin\/admin-ajax.php","fragment_
 <script type="text/javascript" src="./files/shipping_api.js"></script>
 
 <!-- Round up -->
-<script type="text/javascript" src="http://rounditup.uamini.com/rounditup/round_up.js"></script>
 <link rel="stylesheet" href="http://rounditup.uamini.com/rounditup/round_up.css" type="text/css" media="all">
+<script type="text/javascript" src="http://rounditup.uamini.com/rounditup/round_up.js"></script>
+<script type="text/javascript" src="http://rounditup.uamini.com/rounditup/round_up_integration.js"></script>
 
 <!-- DEV MODE -->
-<!-- <script type="text/javascript" src="../round_up.js"></script>
-<link rel="stylesheet" href="../round_up.css" type="text/css" media="all"> -->
-
-<script type="text/javascript">
-	jQuery(document).ready(function(){
-		var html='<tr><th id="round_up_info"></th><td><div id="round_up_container"></div><div id="round_up_charity"></div></td></tr>';
-		jQuery('div.cart_totals table tbody tr.shipping')
-				.after(html);
-		
-		var onApply = function(roundUpTotal, roundUpToken) {
-			jQuery('div.cart_totals table tbody tr.order-total span.amount')
-					.html('$'+roundUpTotal);
-			
-			if(jQuery('[name=round_up_token]').length > 0){
-				jQuery('[name=round_up_token]').remove();
-			}
-			
-			var input=jQuery('<input>')
-				.attr({type:'hidden',name:'round_up_token'})
-				.val(roundUpToken);
-		
-			jQuery('form#cart_form').append(input);
-		};
-		
-		var args={
-			apiKey:'431e6a53-86f6-4870-b039-ed065d3a17ba',
-			total:'123.47',
-			roundUp:'cents',
-			class:'',
-			id:'',
-			css:{},
-			appendTo:'#round_up_container',
-			onApplyCallback:onApply
-		};
-		
-		RoundUp.init(args);
-		
-		jQuery('#round_up_info').append(RoundUp.getInfo());
-		jQuery('#round_up_charity').append(RoundUp.getCharitySelect());
-	});
-</script>
+<!-- <link rel="stylesheet" href="../round_up.css" type="text/css" media="all">
+<script type="text/javascript" src="../round_up.js"></script>
+<script type="text/javascript" src="../round_up_integration.js"></script> -->
 <!-- #RoundItUp app end -->
 
 

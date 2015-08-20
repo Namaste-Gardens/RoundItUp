@@ -264,7 +264,7 @@ var RoundUp = function(){
 					position: 'relative',
 					cursor: ' pointer'
 				})
-			.html('Round Up')
+			.html('Round It Up')
 			.mouseenter(function(){
 					tooltip.css({
 						top: '-' + (div.height() / 2) + 'px',
@@ -335,8 +335,6 @@ var RoundUp = function(){
                     if(result){
                         roundUpToken = token;
                         jQuery(settings.appendTo).append(button);
-						jQuery(settings.appendTo).append(roundRankSelect);
-						
                     }else{
                         button = null;
                     }
