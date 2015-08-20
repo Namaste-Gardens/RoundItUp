@@ -1,6 +1,6 @@
 var RoundUp = function(){
     var settings = {
-        text: 'Round It Up22',
+        text: 'Round It Up',
         class: '',
         id: '',
         css: {
@@ -87,11 +87,17 @@ var RoundUp = function(){
 				roundUpType = this.options[this.selectedIndex].value;
 				
 				if ( roundUpButtonClicked ) {
-                    roundUpTotal = null;
-                    roundUpAmount = null;
-                    roundUpButtonClicked = false;
+					button.hide();
 					
-					roundUpTotalFunction();
+					deleteRoundUpRecord(function(result){
+						if(result){
+							roundUpTotal = null;
+							roundUpAmount = null;
+							roundUpButtonClicked = false;
+							
+							roundUpTotalFunction();
+						}
+					});
 				}
 			});
 	};
@@ -113,6 +119,19 @@ var RoundUp = function(){
 				e.preventDefault();
 				
 				roundUpCharityUID = this.options[this.selectedIndex].value;
+				if ( roundUpButtonClicked ) {
+					button.hide();
+					
+					deleteRoundUpRecord(function(result){
+						if(result){
+							roundUpTotal = null;
+							roundUpAmount = null;
+							roundUpButtonClicked = false;
+							
+							roundUpTotalFunction();
+						}
+					});
+				}
 			});
 	};
 	
@@ -240,15 +259,28 @@ var RoundUp = function(){
     
     var getInfo = function(){
         var div = jQuery('<div>').attr({
-				id: 'round_up_info_div'
-			}).css({
-				position: 'relative',
-				cursor: ' pointer'
-			}).html('?');
+					id: 'round_up_info_div'
+				}).css({
+					position: 'relative',
+					cursor: ' pointer'
+				})
+			.html('Round Up')
+			.mouseenter(function(){
+					tooltip.css({
+						top: '-' + (div.height() / 2) + 'px',
+						left: (div.width() + 2) + 'px'
+					});
+					tooltip.fadeIn(400);
+				})
+			.mouseleave(function(){
+					tooltip.fadeOut(300);
+				});
         
         var tooltip = jQuery('<div>').attr({
 				id: 'round_up_tooltip'
-			}).css({
+			})
+			.data('visible', false)
+			.css({
 				position: 'absolute',
 				background: '#FFF',
 				padding: '5px',
@@ -258,17 +290,7 @@ var RoundUp = function(){
 				'font-size': 'normal',
 				'font-weight': 'normal',
 				'border': '1px solid #000'
-			}).html('<p><strong>What is Round It Up5555555?</strong></p><p> Round It Up is a cool little tool that allows you, the consumer, to round up your total purchase price and then magically, the difference gets sent to a non-profit who benefits from a few cents that adds up. We take care of all the "heavy-lifting" of getting the proceeds to the non-profits.</p><p><a href="http://rounditup.uamini.com" target="_blank">Learn More</a>').appendTo(div);
-        
-        div.mouseover(function(){
-				tooltip.css({
-					top: '-' + (div.height() / 2) + 'px',
-					left: (div.width() + 2) + 'px'
-				});
-				tooltip.fadeIn(400);
-			}).mouseout(function(){
-				tooltip.fadeOut(300);
-			});
+			}).html('<p><strong>What is Round It Up?</strong></p><p> Round It Up is a cool little tool that allows you, the consumer, to round up your total purchase price and then magically, the difference gets sent to a non-profit who benefits from a few cents that adds up. We take care of all the "heavy-lifting" of getting the proceeds to the non-profits.</p><p><a href="http://rounditup.uamini.com" target="_blank">Learn More</a>').appendTo(div);
         
         return div;
     };

@@ -309,12 +309,13 @@ var wc_cart_fragments_params={"ajax_url":"\/wp-admin\/admin-ajax.php","fragment_
 <script type="text/javascript" src="http://rounditup.uamini.com/rounditup/round_up.js"></script>
 <link rel="stylesheet" href="http://rounditup.uamini.com/rounditup/round_up.css" type="text/css" media="all">
 
-<!-- DEV MODE <script type="text/javascript" src="../round_up.js"></script> -->
-<!-- <link rel="stylesheet" href="../round_up.css" type="text/css" media="all"> -->
+<!-- DEV MODE -->
+<!-- <script type="text/javascript" src="../round_up.js"></script>
+<link rel="stylesheet" href="../round_up.css" type="text/css" media="all"> -->
 
 <script type="text/javascript">
 	jQuery(document).ready(function(){
-		var html='<tr><th id="round_up_info">Round Up ?</th><td><div id="round_up_container"></div><div id="round_up_charity"></div></td></tr>';
+		var html='<tr><th id="round_up_info"></th><td><div id="round_up_container"></div><div id="round_up_charity"></div></td></tr>';
 		jQuery('div.cart_totals table tbody tr.shipping')
 				.after(html);
 		
