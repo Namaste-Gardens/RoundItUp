@@ -268,7 +268,7 @@ var RoundUp = function(){
 			.mouseenter(function(){
 					tooltip.css({
 						top: '-' + (div.height() / 2) + 'px',
-						left: (div.width() + 2) + 'px'
+						left: (div.position()['left'] - tooltip.width()) +  'px'
 					});
 					tooltip.fadeIn(400);
 				})
@@ -279,7 +279,6 @@ var RoundUp = function(){
         var tooltip = jQuery('<div>').attr({
 				id: 'round_up_tooltip'
 			})
-			.data('visible', false)
 			.css({
 				position: 'absolute',
 				background: '#FFF',
