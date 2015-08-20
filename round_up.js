@@ -269,7 +269,7 @@ var RoundUp = function(){
 					if ( true === div.data('showTooltip') ) {
 						tooltip.css({
 							top: '-' + (div.height() / 2) + 'px',
-							left: - (tooltip.width() + 20) +  'px'
+							left: - (tooltip.width() - 10) +  'px'
 						});
 						tooltip.fadeIn(400);
 					}
