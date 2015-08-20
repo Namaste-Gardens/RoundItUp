@@ -258,21 +258,28 @@ var RoundUp = function(){
     
     var getInfo = function(){
         var div = jQuery('<div>').attr({
-					id: 'round_up_info_div'
-				}).css({
-					position: 'relative',
-					cursor: ' pointer'
-				})
+				id: 'round_up_info_div'
+			}).css({
+				position: 'relative',
+				cursor: ' pointer'
+			})
+			.data('showTooltip', true)
 			.html('Round It Up')
 			.mouseenter(function(){
-					tooltip.css({
-						top: '-' + (div.height() / 2) + 'px',
-						left: - (tooltip.width() + 20) +  'px'
-					});
-					tooltip.fadeIn(400);
+					if ( true === div.data('showTooltip') ) {
+						tooltip.css({
+							top: '-' + (div.height() / 2) + 'px',
+							left: - (tooltip.width() + 20) +  'px'
+						});
+						tooltip.fadeIn(400);
+					}
 				})
 			.mouseleave(function(){
-					tooltip.fadeOut(300);
+					if ( true === div.data('showTooltip')) {
+						tooltip.fadeOut(300);
+						div.data('showTooltip', false);
+						setTimeout(function() {div.data('showTooltip', true);}, 1000);
+					}
 				});
         
         var tooltip = jQuery('<div>').attr({
