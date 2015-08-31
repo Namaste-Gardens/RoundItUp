@@ -12,3 +12,6 @@ span.roundUpAmount {
 	margin-left		: 20px;
 	color			: #21a117;
 }
+#round_up_info_div {
+    text-decoration: underline;
+}
